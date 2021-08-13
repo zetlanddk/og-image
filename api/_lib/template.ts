@@ -10,7 +10,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, image } = parsedReq;
     let showText = text;
 
-    const debug = false;
+    const debug = true;
 
     if(text == "") {
         showText = `Jeg vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
@@ -19,7 +19,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     let textSize;
     const length = showText.length;
     if(length <= 20) { textSize = "text-6xl text-center pl-12" ;}
-    else if(length <= 42) { textSize = "text-5xl text-center pl-12" ;}
+    else if(length <= 39) { textSize = "text-5xl text-center pl-12" ;}
     else if(length <= 70) { textSize = "text-4xl pl-16" ;}
     else { textSize = "pl-16 text-3xl" };
 
