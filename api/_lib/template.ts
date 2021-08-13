@@ -55,31 +55,34 @@ export function getHtml(parsedReq: ParsedRequest) {
     <body>
         <div class="h-screen flex">
             <div class="m-3 p-3 border-orange flex-grow flex items-center justify-start">
-                <div class="flex">
-                    <img class="h-64 pl-3 pr-6" src="https://height-files.storage.googleapis.com/5c0b5de0-689a-447c-9168-a7b523e4c97a.png" />
-                    <div class="flex flex-col justify-center items-start">
-                        ${ getImage(image) }
-                        <p class="mt-1 text-sm leading-tight text-gray-500 font-extralight">
-                            ${ name }<br />
-                            Medlem af Zetland
-                        </p>
-                        <div class="relative text-xl text-gray-800 mt-6 leading-tight pr-6">
+                <div class="flex flex-col justify-between h-full">
+                    <div class="relative text-3xl text-gray-800 leading-tight flex-grow flex items-center">
+                        <div class="pl-16 pr-6 ml-1">
                             ${emojify(
                                 marked(showText)
                             )}
                         </div>
                     </div>
+                    <div class="flex justify-between items-end">
+                        <div class="flex justify-start items-end">
+                            ${ getImage(image) }
+                            <p class="pl-3 text-base leading-none text-gray-500 font-extralight">
+                                ${ name }<br />
+                                <span class="text-sm italic text-gray-400">Medlem af Zetland</span>
+                            </p>
+                        </div>
+                        <img class="w-36" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
+                    </div>
                 </div>
             </div>
         </div>
-        <img class="fixed w-20 bottom-6 right-6" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
     </body>
 </html>`;
 }
 
 function getImage(src: string) {
     return `<img
-        class="rounded-full h-14 -mt-8"
+        class="rounded-full h-14"
         src="${sanitizeHtml(src)}"
     />`
 }
