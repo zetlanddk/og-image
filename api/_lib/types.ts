@@ -5,4 +5,5 @@ export interface ParsedRequest {
     text: string;
     image: string;
     name: string;
+    firstName: string;
 }
