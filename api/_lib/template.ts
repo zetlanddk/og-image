@@ -10,6 +10,8 @@ export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, image } = parsedReq;
     let showText = text;
 
+    const debug = false;
+
     if(text == "") {
         showText = `Jeg vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
     }
@@ -82,7 +84,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                         <div class="flex justify-start items-end">
                             ${ getImage(image) }
                             <p class="pl-3 text-base leading-none text-gray-500 mb-1">
-                                <span class="font-normal">${ name }</span><br />
+                                <span class="font-normal">${ name }${ debug ? `${length} ${textSize}` : ''}</span><br />
                                 <span class="text-sm font-extralight italic ">Medlem af Zetland</span>
                             </p>
                         </div>
