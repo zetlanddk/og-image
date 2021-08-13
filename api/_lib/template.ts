@@ -10,7 +10,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, image } = parsedReq;
     let showText = text;
 
-    const debug = true;
+    const debug = false;
 
     if(text == "") {
         showText = `Jeg vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
