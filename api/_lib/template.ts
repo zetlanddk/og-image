@@ -7,7 +7,7 @@ const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, name, firstName, image } = parsedReq;
+    const { text, name, image } = parsedReq;
     let showText = text;
 
     if(text == "") {
