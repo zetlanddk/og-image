@@ -21,8 +21,8 @@ export function getHtml(parsedReq: ParsedRequest) {
     else if(length <= 70) { textSize = "text-4xl pl-16" ;}
     else { textSize = "pl-16 text-3xl" };
 
-    const quoteClasses = "text-6xl italic text-gray-400";
-    const textWithQuotes = `<span class="quote quote--start ${quoteClasses} relative inline-block"><span class="absolute block -mt-14 -ml-8">“</span></span>${showText}<span class="qoute quote--end ${quoteClasses} relative inline-block"><span class="absolute mt-5 block">”</span></span>`;
+    const quoteClasses = "italic text-gray-400";
+    const textWithQuotes = `<span class="quote quote--start ${quoteClasses} relative inline-block"><span class="absolute block">“</span></span>${showText}<span class="quote quote--end ${quoteClasses} relative inline-block"><span class="absolute block">”</span></span>`;
 
 
     return `<!DOCTYPE html>
@@ -54,8 +54,17 @@ export function getHtml(parsedReq: ParsedRequest) {
             padding-bottom: 0.3em;
         }
 
-        .qoute {
-            line-height: 0;
+        .quote {
+            font-size: 1.7em;
+        }
+
+        .quote--start span {
+            margin-left: -0.5em;
+            margin-top: -0.9em;
+        }
+
+        .quote--end span {
+            margin-top: -0.3em;
         }
     </style>
     <body>
