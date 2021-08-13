@@ -26,7 +26,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             orientation: portrait;
             font-family: 'Italian Plate No2','Gotham SSm A','Gotham SSm B',Arial,Verdana,sans-serif;
             margin: 0;
-            font-size: 33px;
+            font-size: 32px;
         }
         body {
             background-color: #FAF8F0;
@@ -53,7 +53,6 @@ export function getHtml(parsedReq: ParsedRequest) {
         }
     </style>
     <body>
-        <img class="fixed w-24 bottom-6 right-6" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
         <div class="h-screen flex">
             <div class="m-3 p-3 border-orange flex-grow flex items-center justify-start">
                 <div class="flex">
@@ -73,13 +72,14 @@ export function getHtml(parsedReq: ParsedRequest) {
                 </div>
             </div>
         </div>
+        <img class="fixed w-20 bottom-6 right-6" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
     </body>
 </html>`;
 }
 
 function getImage(src: string) {
     return `<img
-        class="rounded-full h-14 -mt-6"
+        class="rounded-full h-14 -mt-8"
         src="${sanitizeHtml(src)}"
     />`
 }
