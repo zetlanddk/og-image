@@ -8,12 +8,14 @@ const emojify = (text: string) => twemoji.parse(text, twOptions);
 
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, firstName, image } = parsedReq;
-    let showText = `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
+    let showText = text;
 
-    if(text && text != "") {
-        const quoteClasses = "text-6xl italic text-gray-400";
-        showText = `<span class="quote quote--start ${quoteClasses} block absolute">“</span>${text}<span class="qoute quote--end ${quoteClasses} relative inline-block"><span class="absolute mt-5 block">”</span></span>`;
+    if(text == "") {
+        showText= `Jeg vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
     }
+
+    const quoteClasses = "text-6xl italic text-gray-400";
+    showText = `<span class="quote quote--start ${quoteClasses} block absolute">“</span>${showText}<span class="qoute quote--end ${quoteClasses} relative inline-block"><span class="absolute mt-5 block">”</span></span>`;
 
     return `<!DOCTYPE html>
 <html>
@@ -71,7 +73,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                                 <span class="text-sm italic text-gray-400">Medlem af Zetland</span>
                             </p>
                         </div>
-                        <img class="w-36" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
+                        <img class="h-5" src="https://pdf.zetland.dk/gift_card_images/medium-logo-orange.png" />
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ export function parseRequest(req: IncomingMessage) {
 
     const parsedRequest: ParsedRequest = {
         fileType: extension === 'jpeg' ? extension : 'png',
-        text: decodeURIComponent(text as string),
+        text: decodeURIComponent(text as string || ''),
         name: name as string || 'John Doe',
         firstName: first_name as string || 'John',
         image: image as string,
