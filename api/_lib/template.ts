@@ -18,8 +18,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 
     let textSize;
     const length = showText.length;
-    if(length <= 20) { textSize = "text-6xl text-center pl-12" ;}
-    else if(length <= 39) { textSize = "text-5xl text-center pl-12" ;}
+    if(length <= 15) { textSize = "text-6xl text-center pl-14" ;}
+    else if(length <= 39) { textSize = "text-5xl text-center pl-14" ;}
     else if(length <= 70) { textSize = "text-4xl pl-16" ;}
     else { textSize = "pl-16 text-3xl" };
 
@@ -74,7 +74,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             <div class="m-3 p-3 border-orange flex-grow flex items-center justify-start">
                 <div class="flex flex-col justify-between h-full w-full">
                     <div class="relative ${textSize} text-gray-800 font-bold leading-tight flex-grow flex items-center justify-center w-full">
-                        <div class="pr-12 ml-1">
+                        <div class="pr-14 ml-1">
                             ${emojify(
                                 marked(textWithQuotes)
                             )}
