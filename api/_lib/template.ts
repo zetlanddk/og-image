@@ -58,8 +58,8 @@ export function getHtml(parsedReq: ParsedRequest) {
         <div class="h-screen flex">
             <div class="m-3 p-3 border-orange flex-grow flex items-center justify-start">
                 <div class="flex flex-col justify-between h-full">
-                    <div class="relative text-3xl text-gray-800 leading-tight flex-grow flex items-center">
-                        <div class="pl-16 pr-6 ml-1">
+                    <div class="relative text-3xl text-gray-800 font-bold leading-tight flex-grow flex items-center">
+                        <div class="pl-16 pr-12 ml-1">
                             ${emojify(
                                 marked(showText)
                             )}
