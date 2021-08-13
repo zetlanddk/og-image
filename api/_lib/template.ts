@@ -18,7 +18,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     const length = showText.length;
     if(length <= 20) { textSize = "text-6xl text-center pl-12" ;}
     else if(length <= 42) { textSize = "text-5xl text-center pl-12" ;}
-    else if(length <= 70) { textSize = "text-4xl text-center pl-12" ;}
+    else if(length <= 70) { textSize = "text-4xl pl-16" ;}
     else { textSize = "pl-16 text-3xl" };
 
     const quoteClasses = "text-6xl italic text-gray-400";
@@ -73,7 +73,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                         <div class="flex justify-start items-end">
                             ${ getImage(image) }
                             <p class="pl-3 text-base leading-none text-gray-500 mb-1">
-                                <span class="font-normal">${ name }${ length }${textSize}</span><br />
+                                <span class="font-normal">${ name }</span><br />
                                 <span class="text-sm font-extralight italic ">Medlem af Zetland</span>
                             </p>
                         </div>
