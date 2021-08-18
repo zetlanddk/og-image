@@ -17,7 +17,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     if(text == "") {
         isQoute = false;
 
-        showText = `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du helt selv.`
+        showText = `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du selv.`
 
         textSize = 'text-2xl'
     } else {
@@ -29,7 +29,7 @@ export function getHtml(parsedReq: ParsedRequest) {
         else if(length <= 70) { textSize = "text-4xl pl-16" ;}
         else { textSize = "pl-16 text-3xl"; }
 
-        const quoteClasses = "italic text-gray-400";
+        const quoteClasses = "italic text-zetland-orange";
         const textWithQuotes = `<span class="quote quote--start ${quoteClasses} relative inline-block"><span class="absolute block">“</span></span>${text}<span class="quote quote--end ${quoteClasses} relative inline-block"><span class="absolute block">”</span></span>`;
 
         showText = textWithQuotes;
@@ -60,6 +60,9 @@ export function getHtml(parsedReq: ParsedRequest) {
             border: 4px solid #FA4113;
         }
 
+        .text-zetland-orange {
+            color: #FA4113;
+        }
         .emoji {
             height: 1.3em;
             display: inline-block;
@@ -85,8 +88,8 @@ export function getHtml(parsedReq: ParsedRequest) {
             <div class="m-3 p-3 border-orange flex-grow flex items-center justify-start">
                 ${ isQoute ? "" : '<img class="h-72 pl-8 pr-8" src="https://height-files.storage.googleapis.com/5c0b5de0-689a-447c-9168-a7b523e4c97a.png" />' }
 
-                <div class="flex ${ isQoute ? "flex-col justify-between" : "flex-col-reverse justify-center" } h-full w-full">
-                    <div class="relative ${textSize} text-gray-800 ${ isQoute ? "font-bold flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
+                <div class="flex ${ isQoute ? "flex-col justify-between" : "flex-col-reverse justify-center -mt-6" } h-full w-full">
+                    <div class="relative ${textSize} text-gray-800 ${ isQoute ? "font-medium flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
                         <div class="pr-14 ml-1">
                             ${emojify(
                                 marked(showText)
