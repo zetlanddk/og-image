@@ -14,6 +14,8 @@ export function getHtml(parsedReq: ParsedRequest) {
 
     let textSize;
 
+    let length;
+
     if(text == "") {
         isQoute = false;
 
@@ -23,11 +25,11 @@ export function getHtml(parsedReq: ParsedRequest) {
     } else {
         isQoute = true;
 
-        const length = text.length;
-        if(length <= 15) { textSize = "text-6xl text-center pl-14" ;}
-        else if(length <= 39) { textSize = "text-5xl text-center pl-14" ;}
-        else if(length <= 70) { textSize = "text-4xl pl-16" ;}
-        else { textSize = "pl-16 text-3xl"; }
+        length = text.length;
+        if(length <= 15) { textSize = "text-6xl font-bold text-center pl-14" ;}
+        else if(length <= 39) { textSize = "text-5xl font-bold pl-14" ;}
+        else if(length <= 70) { textSize = "text-4xl font-semibold pl-16" ;}
+        else { textSize = "pl-16 text-3xl font-semibold"; }
 
         const quoteClasses = "italic text-zetland-orange";
         const textWithQuotes = `<span class="quote quote--start ${quoteClasses} relative inline-block"><span class="absolute block">“</span></span>${text}<span class="quote quote--end ${quoteClasses} relative inline-block"><span class="absolute block">”</span></span>`;
@@ -90,7 +92,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                 ${ isQoute ? "" : '<img class="h-72 pl-8 pr-8" src="https://height-files.storage.googleapis.com/5c0b5de0-689a-447c-9168-a7b523e4c97a.png" />' }
 
                 <div class="flex ${ isQoute ? "flex-col justify-between" : "flex-col-reverse justify-center -mt-6" } h-full w-full">
-                    <div class="relative ${textSize} ${ isQoute ? "font-medium flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
+                    <div class="relative ${textSize} ${ isQoute ? "flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
                         <div class="pr-14 ml-1">
                             ${emojify(
                                 marked(showText)
