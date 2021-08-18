@@ -54,6 +54,7 @@ export function getHtml(parsedReq: ParsedRequest) {
             background-color: #FAF8F0;
             padding: 0;
             margin: 0;
+            color: #203B62;
         }
 
         .border-orange {
@@ -89,7 +90,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                 ${ isQoute ? "" : '<img class="h-72 pl-8 pr-8" src="https://height-files.storage.googleapis.com/5c0b5de0-689a-447c-9168-a7b523e4c97a.png" />' }
 
                 <div class="flex ${ isQoute ? "flex-col justify-between" : "flex-col-reverse justify-center -mt-6" } h-full w-full">
-                    <div class="relative ${textSize} text-gray-800 ${ isQoute ? "font-medium flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
+                    <div class="relative ${textSize} ${ isQoute ? "font-medium flex-grow mt-2" : "" } leading-tight flex items-center justify-center w-full">
                         <div class="pr-14 ml-1">
                             ${emojify(
                                 marked(showText)
@@ -99,7 +100,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                     <div class="flex justify-between items-end ${isQoute ? "" : "mb-6"}">
                         <div class="flex justify-start items-end">
                             ${ getImage(image) }
-                            <p class="pl-3 text-base leading-none text-gray-500 mb-1">
+                            <p class="pl-3 text-base leading-none mb-1">
                                 <span class="font-normal">${ name }${ debug ? `${length} ${textSize}` : ''}</span><br />
                                 <span class="text-sm font-extralight italic ">Medlem af Zetland</span>
                             </p>
