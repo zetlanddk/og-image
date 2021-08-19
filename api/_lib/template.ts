@@ -27,7 +27,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
         length = text.length;
         if(length <= 15) { textSize = "text-6xl font-bold text-center pl-14" ;}
-        else if(length <= 39) { textSize = "text-5xl font-bold pl-14" ;}
+        else if(length <= 39) { textSize = "text-5xl text-center font-bold pl-14" ;}
         else if(length <= 70) { textSize = "text-4xl font-semibold pl-16" ;}
         else { textSize = "pl-16 text-3xl font-semibold"; }
 
