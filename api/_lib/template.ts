@@ -80,7 +80,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     </style>
     <body style="background-color: ${theme.backgroundColor}">
         ${ debug ? `<span class="fixed z-40">${length} ${textSize}vh</span>` : ''}
-        <svg style="color: ${theme.thirdElementColor};width: 102vw; height: 102vh;" class="z-10 fixed" width="727" height="409" preserveAspectRatio="none" viewBox="0 0 727 409" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg style="color: ${theme.thirdElementColor};width: 106vw; height: 106vh;margin-left:-3vw;margin-top:-3vw" class="z-10 fixed" width="727" height="409" preserveAspectRatio="none" viewBox="0 0 727 409" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M480.544 334.049L443.688 282.704L377.872 255.057H321.271L262.037 301.136L225.181 365.646L221.232 394.61C220.604 399.187 220.451 404.04 220.604 409H489.514L491.075 395.926L480.544 334.049Z" fill="currentColor"/>
             <path d="M727 396.753V217.505L710.791 202.671L695.684 197.236L678.159 193.608L666.067 197.236L661.23 217.183L678.465 268.574L695.699 294.568V315.725L665.47 336.881L615.894 354.409L586.277 359.247L578.426 366.503V379.194L592.323 407.01L595.078 408.954H714.771C721.536 408.954 727.015 403.474 727.015 396.707L727 396.753Z" fill="currentColor"/>
             <path d="M111.565 195.675L144.197 90.0146L77.3254 0H12.2447C5.47951 0 0 5.48048 0 12.2469V396.753C0 403.52 5.47951 409 12.2447 409H95.0344L178.911 398.131L111.565 195.675Z" fill="currentColor"/>
