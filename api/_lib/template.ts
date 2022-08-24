@@ -94,7 +94,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                     <path d="M55.3554 32.8611L47.3115 29.2394L45.9979 27.8096L42.6357 16.7732L46.727 7.02478L49.3601 3.86983L57.8378 0L65.4419 0.862588L71.4372 3.43854L74.01 5.19325L78.7641 10.1206L82.4697 14.6581L82.9999 21.2693L81.4092 29.0503L77.312 42.0128L71.1419 53.1792L65.0021 60.2039L63.1041 52.4643L66.9001 42.001L67.1953 37.2685L66.4662 32.6838L63.1041 32.5361L55.3554 32.8611Z" fill="currentColor"/>
                 </svg>
             </div>
-            <div style="font-family: SharpGrotesk20;font-size:${textSize}vh;line-height:${lineHeight}vh;margin-top:-2vh;" class="${textClasses} ">
+            <div style="font-family: SharpGrotesk20;font-size:${textSize}vh;line-height:${lineHeight}vh;margin-top:-5vh;" class="${textClasses} ">
                 <div class="">
                     ${emojify(
                         marked(showText)
@@ -132,7 +132,7 @@ export function getHtml(parsedReq: ParsedRequest) {
 
 function getImage(src: string) {
     return `<img
-        style="height: 20vh;"
+        style="height: 16vh;"
         class="rounded-full bg-gray-300"
         src="${sanitizeHtml(src)}"
     />`
