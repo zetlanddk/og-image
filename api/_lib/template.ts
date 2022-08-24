@@ -10,7 +10,7 @@ export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, image, firstName } = parsedReq;
     let showText;
 
-    const debug = true;
+    const debug = false;
 
     let textSize: number, textClasses;
 
