@@ -1,13 +1,13 @@
 
 import marked from 'marked';
 import { sanitizeHtml } from './sanitizer';
-import { ParsedRequest } from './types';
+import { ParsedRequest, Theme } from './types';
 const twemoji = require('twemoji');
 const twOptions = { folder: 'svg', ext: '.svg' };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { text, name, image, firstName } = parsedReq;
+    const { text, name, image, firstName, theme } = parsedReq;
     let showText;
 
     const debug = false;
@@ -16,14 +16,42 @@ export function getHtml(parsedReq: ParsedRequest) {
 
     let length;
 
-    let theme = {
-        backgroundColor: "#FF3508",
-        thirdElementColor: "#FF5530",
-        primaryTextColor: "#F5CC5B",
-        secondaryTextColor: "#FDF2D6",
-        logoColor: "#FDF2D6"
+    const themes: { [key: string]: Theme } = {
+        red: {
+            quoteColor: "#F5CC5B",
+            backgroundColor: "#FF3508",
+            thirdElementColor: "#FF5530",
+            primaryTextColor: "#F5CC5B",
+            secondaryTextColor: "#FDF2D6",
+            logoColor: "#FDF2D6"
+        },
+        yellow: {
+            quoteColor: "#FF3508",
+            backgroundColor: "#F6CC5C",
+            thirdElementColor: "#F7D474",
+            primaryTextColor: "#FF3508",
+            secondaryTextColor: "#222222",
+            logoColor: "#FF3508"
+        },
+        green: {
+            quoteColor: "#222222",
+            backgroundColor: "#40CB76",
+            thirdElementColor: "#5DD38B",
+            primaryTextColor: "#FFFCF5",
+            secondaryTextColor: "#29382F",
+            logoColor: "#FF3508"
+        },
+        pink: {
+            quoteColor: "#3D4393",
+            backgroundColor: "#E5C0D1",
+            thirdElementColor: "#E9C9D8",
+            primaryTextColor: "#3D4393",
+            secondaryTextColor: "#29382F",
+            logoColor: "#FF3508"
+        },
     }
 
+    let showTheme: Theme = themes[theme];
     showText = text == "" ? `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du selv.` : text
     length = showText.length;
     const x = length;
@@ -78,16 +106,16 @@ export function getHtml(parsedReq: ParsedRequest) {
             margin-top: -0.3em;
         }
     </style>
-    <body style="background-color: ${theme.backgroundColor}">
+    <body style="background-color: ${showTheme.backgroundColor}">
         ${ debug ? `<span class="fixed z-40">${length} ${textSize}vh</span>` : ''}
-        <svg style="color: ${theme.thirdElementColor};width: 106vw; height: 106vh;margin-left:-3vw;margin-top:-3vw" class="z-10 fixed" width="727" height="409" preserveAspectRatio="none" viewBox="0 0 727 409" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg style="color: ${showTheme.thirdElementColor};width: 106vw; height: 106vh;margin-left:-3vw;margin-top:-3vw" class="z-10 fixed" width="727" height="409" preserveAspectRatio="none" viewBox="0 0 727 409" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M480.544 334.049L443.688 282.704L377.872 255.057H321.271L262.037 301.136L225.181 365.646L221.232 394.61C220.604 399.187 220.451 404.04 220.604 409H489.514L491.075 395.926L480.544 334.049Z" fill="currentColor"/>
             <path d="M727 396.753V217.505L710.791 202.671L695.684 197.236L678.159 193.608L666.067 197.236L661.23 217.183L678.465 268.574L695.699 294.568V315.725L665.47 336.881L615.894 354.409L586.277 359.247L578.426 366.503V379.194L592.323 407.01L595.078 408.954H714.771C721.536 408.954 727.015 403.474 727.015 396.707L727 396.753Z" fill="currentColor"/>
             <path d="M111.565 195.675L144.197 90.0146L77.3254 0H12.2447C5.47951 0 0 5.48048 0 12.2469V396.753C0 403.52 5.47951 409 12.2447 409H95.0344L178.911 398.131L111.565 195.675Z" fill="currentColor"/>
             <path d="M301.22 110.268L400.693 29.117L458.534 80.2171L424.555 165.792L704.699 103.333L586.997 0H199.451L189.166 71.3228L301.22 110.268Z" fill="currentColor"/>
         </svg>
 
-        <div style="color: ${theme.primaryTextColor};padding:7vh;" class="h-screen w-screen flex flex-col items-start justify-between fixed z-20">
+        <div style="color: ${showTheme.primaryTextColor};padding:7vh;" class="h-screen w-screen flex flex-col items-start justify-between fixed z-20">
             <div style="height: 18vh; width: 18vh" class="">
                 <svg class="" viewBox="0 0 83 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.3164 35.4016L3.35013 31.0414L2.03659 29.6057L0 18.1144L2.76566 8.82088L5.39877 5.66593L13.3403 3.88758L21.4806 2.65869L27.4698 5.24055L30.4645 6.55215L35.5258 11.3023L38.5024 16.4542L39.0326 23.0654L37.4961 34.2554L31.4767 49.7288L27.1806 54.9753L21.0407 62L19.1367 54.2604L22.9387 43.7971L23.234 39.0646L22.4989 34.4799L19.1367 34.3381L14.3164 35.4016Z" fill="currentColor"/>
@@ -102,7 +130,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                 </div>
             </div>
             <div class="flex justify-between w-full items-end">
-                <div class="" style="color: ${theme.secondaryTextColor};">
+                <div class="" style="color: ${showTheme.secondaryTextColor};">
                     <div class="flex justify-start items-center">
                         ${ getImage(image) }
                         <p style="font-size: 3.8vh; line-height: 6vh" class="pl-3 leading-none mb-1">
@@ -112,7 +140,7 @@ export function getHtml(parsedReq: ParsedRequest) {
                     </div>
                 </div>
                 <div class="" style="width: 13vw;">
-                    <svg class="" style="color: ${theme.logoColor};" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="" style="color: ${showTheme.logoColor};" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g>
                         <path d="M0 23.562V19.6198L9.3508 6.16451H0.560536V1.1582H16.0831V5.47617L7.23082 18.4617H16.1452V23.562H0Z" fill="currentColor"/>
                         <path d="M25.9973 24C23.0676 24 20.9062 23.2385 19.5142 21.7154C18.1223 20.1933 17.4258 18.1066 17.4258 15.457V13.7985C17.4258 11.9837 17.7844 10.425 18.5015 9.12053C19.2187 7.81703 20.2206 6.81616 21.5091 6.11694C22.7977 5.41772 24.3148 5.0686 26.0594 5.0686C28.0543 5.0686 29.6748 5.45431 30.922 6.22672C32.1692 6.99913 33.0824 8.02571 33.6646 9.30844C34.2458 10.5912 34.5374 12.0044 34.5374 13.5483V16.0514H22.6627C22.8292 18.4923 23.9818 19.7127 26.1225 19.7127C26.9115 19.7127 27.5194 19.5406 27.9459 19.1964C28.3715 18.8523 28.668 18.3884 28.8345 17.8039V17.71H34.4133V17.8039C34.0182 19.6613 33.1612 21.1576 31.8421 22.294C30.522 23.4313 28.5744 23.999 25.9983 23.999L25.9973 24ZM26.1225 9.19965C24.0655 9.19965 22.9228 10.3469 22.6942 12.6414H29.333C29.2709 11.5357 28.9852 10.6861 28.4759 10.0907C27.9666 9.49635 27.1825 9.19866 26.1225 9.19866V9.19965Z" fill="currentColor"/>
