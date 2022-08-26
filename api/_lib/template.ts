@@ -133,13 +133,13 @@ export function getHtml(parsedReq: ParsedRequest) {
                 <div class="" style="color: ${showTheme.secondaryTextColor};">
                     <div class="flex justify-start items-center">
                         ${ getImage(image) }
-                        <p style="font-size: 3.8vh; line-height: 6vh" class="pl-3 leading-none mb-1">
+                        <p style="font-size: 4.9vh; line-height: 6vh" class="pl-3 tracking-wide leading-none mb-1">
                             <span class="">${ name }${ debug ? `${length} ${textSize}` : ''}</span><br />
                             <span class="">Medlem af Zetland</span>
                         </p>
                     </div>
                 </div>
-                <div class="" style="width: 13vw;">
+                <div class="" style="width: 32vh;">
                     <svg class="" style="color: ${showTheme.logoColor};" viewBox="0 0 110 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g>
                         <path d="M0 23.562V19.6198L9.3508 6.16451H0.560536V1.1582H16.0831V5.47617L7.23082 18.4617H16.1452V23.562H0Z" fill="currentColor"/>

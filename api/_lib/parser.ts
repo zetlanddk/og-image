@@ -6,7 +6,7 @@ export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
     const { pathname, query } = parse(req.url || '/', true);
     const { image, text, name, first_name, theme } = (query || {});
-    
+
     const arr = (pathname || '/').slice(1).split('.');
     let extension = '';
     extension = arr.pop() as string;
