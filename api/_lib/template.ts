@@ -9,6 +9,7 @@ const emojify = (text: string) => twemoji.parse(text, twOptions);
 export function getHtml(parsedReq: ParsedRequest) {
     const { text, name, image, firstName, theme } = parsedReq;
     let showText;
+    let defaultText = false;
 
     const debug = false;
 
@@ -52,17 +53,23 @@ export function getHtml(parsedReq: ParsedRequest) {
     }
 
     let showTheme: Theme = themes[theme];
-    showText = text == "" ? `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du selv.` : text
+    if(text == "") {
+        showText = `${firstName} vil gerne give dig muligheden for at prøve Zetland i en måned – uden binding. Og prisen? Den bestemmer du selv.`
+        defaultText = true;
+    } else {
+        showText = text;
+    }
     length = showText.length;
     const x = length;
     const x1 = 10.0;
-    const y1 = 18.0
-    const a = -0.107;
-    const b = y1 - (a*x1);
-    textSize = x < x1 ? y1 : Math.max((a*x) + b, 8.4);
+    const yHigh = 15.0
+    const yLow = 8.4;
+    const a = -0.08;
+    const b = yHigh - (a*x1);
+    textSize = x < x1 ? yHigh : Math.max((a*x) + b, yLow);
     const lineHeight: number = 0 + textSize * 1.3;
     textClasses = "w-full font-semibold"
-    if(length <= 20) { textClasses += " text-center" ;}
+    if(length <= 20) { textClasses += " " ;}
     // else if(length <= 39) { textSize = "text-5xl text-center font-bold pl-14" ;}
     // else if(length <= 70) { textSize = "text-4xl font-semibold pl-16" ;}
     // else { textSize = "pl-16 text-3xl font-semibold"; }
@@ -116,7 +123,7 @@ export function getHtml(parsedReq: ParsedRequest) {
         </svg>
 
         <div style="color: ${showTheme.primaryTextColor};padding:7vh;" class="h-screen w-screen flex flex-col items-start justify-between fixed z-20">
-            <div style="height: 18vh; width: 18vh" class="">
+            <div style="height: 18vh; width: 18vh" class="${defaultText ? 'opacity-0' : ''}">
                 <svg class="" viewBox="0 0 83 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M14.3164 35.4016L3.35013 31.0414L2.03659 29.6057L0 18.1144L2.76566 8.82088L5.39877 5.66593L13.3403 3.88758L21.4806 2.65869L27.4698 5.24055L30.4645 6.55215L35.5258 11.3023L38.5024 16.4542L39.0326 23.0654L37.4961 34.2554L31.4767 49.7288L27.1806 54.9753L21.0407 62L19.1367 54.2604L22.9387 43.7971L23.234 39.0646L22.4989 34.4799L19.1367 34.3381L14.3164 35.4016Z" fill="currentColor"/>
                     <path d="M55.3554 32.8611L47.3115 29.2394L45.9979 27.8096L42.6357 16.7732L46.727 7.02478L49.3601 3.86983L57.8378 0L65.4419 0.862588L71.4372 3.43854L74.01 5.19325L78.7641 10.1206L82.4697 14.6581L82.9999 21.2693L81.4092 29.0503L77.312 42.0128L71.1419 53.1792L65.0021 60.2039L63.1041 52.4643L66.9001 42.001L67.1953 37.2685L66.4662 32.6838L63.1041 32.5361L55.3554 32.8611Z" fill="currentColor"/>
