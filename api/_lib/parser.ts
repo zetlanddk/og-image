@@ -3,7 +3,7 @@ import { parse } from 'url';
 import { ParsedRequest } from './types';
 
 export function parseRequest(req: IncomingMessage) {
-    const { pathname, query } = parse(req.url || '/', true);
+    let { pathname, query } = parse(req.url || '/', true);
 
     if( !query.first_name ) {
         const base64 = ((((pathname || "").split("/") || []).pop() || "").split(".") || [] )[0];
