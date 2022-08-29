@@ -6,8 +6,13 @@ export function parseRequest(req: IncomingMessage) {
     let { pathname, query } = parse(req.url || '/', true);
 
     if( !query.first_name ) {
-        const base64 = ((((pathname || "").split("/") || []).pop() || "").split(".") || [] )[0];
-        const json = Buffer.from(base64, 'base64').toString('ascii');
+        const splitPath = (pathname || "").split("/");
+        splitPath.shift();
+        splitPath.shift();
+        splitPath.shift();
+        const base64 = (splitPath.join('/').split(".") || [] )[0];
+        const json = Buffer.from(base64, 'base64').toString('utf8');
+        console.log({ json });
         query = JSON.parse(json)
     }
 
